@@ -1,5 +1,14 @@
 const mymap = L.map('issMap').setView([0, 0], 1);
-const marker =     L.marker([0, 0]).addTo(mymap)
+
+const issIcon = L.icon({
+    iconUrl: '320px-International_Space_Station.svg.png',
+    iconSize: [50, 32],
+    iconAnchor: [25, 16],
+});
+
+// L.marker([50.505, 30.57], {icon: issIcon}).addTo(mymap);
+
+const marker = L.marker([0, 0], { icon: issIcon}).addTo(mymap)
 
 const attribution = 
     '&copy; <a href= "https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
