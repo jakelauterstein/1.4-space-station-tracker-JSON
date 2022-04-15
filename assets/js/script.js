@@ -1,4 +1,13 @@
-const api_url = "https://api.wheretheiss.at/v1/satellites/25544"
+const mymap = L.map('issMap').setView([0, 0], 1);
+const marker =     L.marker([0, 0]).addTo(mymap)
+
+const attribution = 
+    '&copy; <a href= "https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+
+    const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+    const tiles = L.tileLayer(tileUrl, {attribution}  )
+    tiles.addTo(mymap);
+    const api_url = "https://api.wheretheiss.at/v1/satellites/25544"
 
 async function getISS() {
     const response = await fetch(api_url);
@@ -7,6 +16,9 @@ async function getISS() {
 
     document.getElementById('lat').textContent = latitude
     document.getElementById('lon').textContent = longitude
+
+    // L.marker([latitude, longitude]).addTo(mymap)
+    marker.setLatLng([latitude, longitude]);
 
 
     console.log(data);
